@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>mamamoblue:P</title><style>
+    /* Internal CSS styles go here */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      text-align: center;
+      padding-top: 50px;
+    }
+
+    h1 {
+      color: #e67a32;
+      font-size: 52px;
+    }
+
+     .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+    }
+
+    button {
+            font-size: 36px;
+            padding: 40px 80px;
+            margin: 60px;
+            background-color: #e67a32;
+            color: white;
+            border: 2px solid pink;
+            border-radius: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #d45e00;
+        }
+
+        .pop {
+                animation: pop-effect 0.3s ease;
+        }
+
+        @keyframes pop-effect {
+          0% {transform: scale(1); }
+          50% {transform: scale(1.3); }
+          100% {transform: scale(1); }
+       }
+
+        #result {
+            font-size: 50px;
+            margin-top: 20px;
+            color: #333;
+       }
+        .random-cat   {
+            position: absolute;
+            width: 150px;
+            height: auto;
+            border-radius: 16px;
+            border: 2px solid #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: floatUp 0.6s ease;
+            z-index: 10;
+}
+    @keyframes floatUp {
+        0% {
+                transform: translateY(30px);
+                opacity: 0;
+}
+  100% {
+                transform: translateY(0);
+                opacity: 1;
+    }
+}
+   .fullscreen-img {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        color: white;
+        font-size: 32px;
+}
+   .fullscreen-img img {
+        max-width: 90%;
+        max-height: 70%;
+        border: 4px solid white;
+        border-radius: 20px;
+        margin-bottom: 20px;
+}
+</style>
+</head>
+<body>
+    <h1>DO YOU LOVE KITTIES?</h1>
+
+<div class="button-group">
+<button onclick="yesClicked()">YES!!</button>
+<button id="noButton" onclick="noClicked(this)">NO..</button>
+</div>
+
+<div id="result"></div>
+
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSIT_eB2HcKoxd24GeTEdd68sbYty6tjK-BFqPJCN22RFSXinHPFVsxFg&s=10" alt="KITTY" width="500" height="auto">
+
+<script>
+let noClickCount = 0;
+
+     function yesClicked() {
+                const catImg = document.createElement('img');
+                catImg.src = getRandomCatImage();
+                catImg.className = 'random-cat';
+                catImg.style.left = `${Math.random()*90}%`;
+                catImg.style.top = `${Math.random()*80+10}%`;
+document.body.appendChild(catImg);
+
+         setTimeout(() => {
+                catImg.remove();
+        },   5000);
+}
+        function getRandomCatImage() {
+                const cats = [
+                          `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPFToidTwaegO5WkQBdraE62J2Xq9_Z0WklGUj6p6t8tPZTIy73y8we_s&s=10`,
+                          `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6xcf6y9OB-C_US3ZlwuB633_9BJo2EwVx6lCXj0oUJ5xxxV9zgHMdGFk&s=10`,
+                          `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRRGU10wi6g4LqC0RLEwolcXzxxVm28Jwb-02Qcmfsw5lXb5pFhEDi6BFu&s=10`,
+                          `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjBtNnxVKNovpHQMeHLqcjIz1eNwTXyVRd0ZzBqOnKwbFL6JWCezJHK5Y&s=10`,
+                          `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQD7-qA3F6sRx50F37U0m0VoKTJCTEwofMa6IVn5ZQOQmIKsJBzYaypxxts&s=10`,
+                         `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQil5dXigsNRJhsyKaEC2Dt3aQxfQKImHn3E0bJKuSA_4z2GnIhv73xxw&s=10`,
+                         `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTchFq0-WUaa00c1IU49XsSccICkRAP7-KeKWgZYZv-ARE7o0c5aoxpXi31&s=10`,
+                         `https://i.pinimg.com/236x/59/9d/48/599d48864fecddfc4c012a332a52eb65.jpg`,
+                         `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuaPwgHhIsLmFncUKvCsu8PXqlS_QQtSd6X-azm5vBtlL5lzaxohJAm89l&s=10`,
+                         `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfHyDiN5Mxk5DhynJTtxblc5mZKsUYHpIiv6tA3xgOoCWRynmvS9yegMM&s=10`
+
+];
+return cats[Math.floor(Math.random()*cats.length)];
+
+}
+
+   function noClicked(button) {
+         noClickCount++;
+
+         if (noClickCount >= 7) {
+             showfullscreenImage();
+             return;
+}
+
+                const x = Math.random()* (window.innerWidth - button.offsetWidth);
+                const y = Math.random()* (window.innerHeight - button.offsetHeight);
+    
+    button.style.position = 'absolute';
+    button.style.left = `${x}px`;
+    button.style.top =`${y}px`;
+    button.classList.add('pop');
+
+ setTimeout(() => {
+       button.classList.remove('pop');
+       }, 300);
+}
+     function showfullscreenImage() {
+           const fullImg = document.createElement('div');
+           fullImg.className = 'fullscreen-img';
+           fullImg.innerHTML = 
+`<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStof9wpMrGlFW7dUctwfxPmebDsYkq6MQIa9jUo6eMQLibSRJYo6yvuo4&s=10" alt="jumpscare">
+
+<p>r u sure?</p>
+`;
+document.body.appendChild(fullImg);
+}
+</script>
+</body>
+</html>
