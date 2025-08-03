@@ -19,7 +19,7 @@
      .button-group {
             display: flex;
             justify-content: center;
-            gap: 60px;
+            gap: 80px;
             flex-wrap: wrap;
             margin-bottom: 30px;
     }
@@ -33,7 +33,10 @@
             border: 2px solid pink;
             border-radius: 16px;
             cursor: pointer;
-        }
+            flex-shrink: 0;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
 
         button:hover {
             background-color: #d45e00;
